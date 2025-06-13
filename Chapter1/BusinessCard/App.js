@@ -1,8 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image,ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image,ScrollView,Button,Linking} from 'react-native';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+
 export default function App() {
+  const onContactMe=()=>{
+    // console.warn("Contact Me");
+    Linking.openURL("mailto:smithjasn4@gmail.com")
+  }
   return (
     <ScrollView showsVerticalScrollIndicator={true}>
     <View style={styles.container}>
@@ -30,6 +35,8 @@ export default function App() {
         <FontAwesome5 name="telegram" size={24} color="black" />
         <StatusBar style="auto" />
       </View>
+
+      <Button title='contact-me' onPress={onContactMe}/> 
 
       <Text style={{ padding: 10, fontSize: 16 }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
