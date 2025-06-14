@@ -6,8 +6,10 @@ import {
   Image,
   ScrollView,
   Button,
-  Linking, 
+  Linking,
   // SafeAreaView
+  ActivityIndicator,
+
 } from 'react-native';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -40,92 +42,121 @@ export default function App() {
       </View>
     )
   }
-  
-  return (
-    <>  
-    <SafeAreaProvider>
-    <SafeAreaView edges={['bottom']}>
-      
-    <ScrollView showsVerticalScrollIndicator={true}>
-    <View style={styles.container}>
-      <Image source={{
-        uri: "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=3006&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      }}
-        style={{
-          height: '20%',
-          width: '100%',
-          // aspectRatio:16/9
-        }}
-      />
-      <Image source={require('./assets/ProfileImage.png')} style={{
-        width: 100, height: 100, borderRadius: 50, borderWidth: 5,
-        borderColor: 'white',
-        marginTop: '-50'
-      }} />
-      <Text style={{ fontSize: 30, fontWeight: 500 }}>{name}</Text>
-      <Text>{onDesignation()}</Text>
+  const isLoading = true;
+  const isError = true;
+  // const like =10;
+  const like = 0;
+  // const like =0;
+  // if(isLoading){
+  //   return <ActivityIndicator/>
+  // }
+  return(
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      {/* <Text>Hello World</Text> */}
+      {/* {isLoading?<ActivityIndicator/>:<Text>Hello World</Text>} */}
+      {/* {isLoading?<ActivityIndicator/>:null} */}
+      {/* {null} */}
+      {/* {false} */}
+      {/* {undefined} */}
+      {/* {0} */}
+      {/* {0} does not work */}
+      {/* {isLoading&&!isError&&<ActivityIndicator/> } */}
 
-      {renderIcons()}
-      <Button title='contact-me' onPress={onContactMe}/> 
+      {/* {like && <Text>Post has {like} likes </Text>} */}
+      {/* above works perfectly in case null,undefined  but does not work when like= 0 */}
+      {/* {!like && <Text>Post has {like} likes </Text>} */}
+      {/* Above works  */}
+      {/* {!!like && <Text>Post has {like} likes </Text>} */}
+      {/* Above works */}
 
-      <Text style={{ padding: 10, fontSize: 16 }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Nam
-        aliquam sem et tortor consequat id porta nibh. Pellentesque nec
-        nam aliquam sem. Placerat duis ultricies lacus sed. Non curabitur
-        gravida arcu ac tortor dignissim convallis aenean. Amet nisl purus
-        in mollis nunc. Vel elit scelerisque mauris pellentesque pulvinar
-        pellentesque. Sagittis orci a scelerisque purus semper eget duis
-        at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
-        Duis at consectetur lorem donec massa sapien faucibus et molestie.
-        At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
-        eget. Purus sit amet volutpat consequat mauris nunc congue nisi
-        vitae. Urna condimentum mattis pellentesque id nibh tortor id.
-        Consequat id porta nibh venenatis. Lectus vestibulum mattis
-        ullamcorper velit sed ullamcorper. Mauris a diam maecenas sed enim
-        ut sem. Volutpat commodo sed egestas egestas fringilla phasellus.
-        Turpis egestas integer eget aliquet nibh praesent tristique magna
-        sit. Congue mauris rhoncus aenean vel elit scelerisque. Tellus
-        integer feugiat scelerisque varius morbi enim. Consectetur a erat
-        nam at. Bibendum arcu vitae elementum curabitur vitae nunc. Sit
-        amet consectetur adipiscing elit. Rhoncus mattis rhoncus urna
-        neque viverra justo. Malesuada pellentesque elit eget gravida.
-        Vitae nunc sed velit dignissim sodales ut eu sem integer.
-        pellentesque. Sagittis orci a scelerisque purus semper eget duis
-        at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
-        Duis at consectetur lorem donec massa sapien faucibus et molestie.
-        At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
-        eget. Purus sit amet volutpat consequat mauris nunc congue nisi
-        vitae. Urna condimentum mattis pellentesque id nibh tortor id.
-        Consequat id porta nibh venenatis. Lectus vestibulum mattis
-        ullamcorper velit sed ullamcorper.pellentesque. Sagittis orci a scelerisque purus semper eget duis
-        at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
-        Duis at consectetur lorem donec massa sapien faucibus et molestie.
-        At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
-        eget. Purus sit amet volutpat consequat mauris nunc congue nisi
-        vitae. Urna condimentum mattis pellentesque id nibh tortor id.
-        Consequat id porta nibh venenatis. Lectus vestibulum mattis
-        ullamcorper velit sed ullamcorper.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Nam
-        aliquam sem et tortor consequat id porta nibh. Pellentesque nec
-        nam aliquam sem. Placerat duis ultricies lacus sed. Non curabitur
-        gravida arcu ac tortor dignissim convallis aenean. Amet nisl purus
-        in mollis nunc. Vel elit scelerisque mauris pellentesque pulvinar
-        pellentesque. Sagittis orci a scelerisque purus semper eget duis
-        at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
-        Duis at consectetur lorem donec massa sapien faucibus et molestie.
-        At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
-        eget.
-      </Text>
-    <StatusBar style="light" />
+      {<Text>Post has {like || 'no'} likes </Text>}
     </View>
-    </ScrollView>
+  )
+  // return (
+  //   <>  
+  //   <SafeAreaProvider>
+  //   <SafeAreaView edges={['bottom']}>
+      
+  //   <ScrollView showsVerticalScrollIndicator={true}>
+  //   <View style={styles.container}>
+  //     <Image source={{
+  //       uri: "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=3006&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  //     }}
+  //       style={{
+  //         height: '20%',
+  //         width: '100%',
+  //         // aspectRatio:16/9
+  //       }}
+  //     />
+  //     <Image source={require('./assets/ProfileImage.png')} style={{
+  //       width: 100, height: 100, borderRadius: 50, borderWidth: 5,
+  //       borderColor: 'white',
+  //       marginTop: '-50'
+  //     }} />
+  //     <Text style={{ fontSize: 30, fontWeight: 500 }}>{name}</Text>
+  //     <Text>{onDesignation()}</Text>
 
-    </SafeAreaView>
+  //     {renderIcons()}
+  //     <Button title='contact-me' onPress={onContactMe}/> 
 
-    </SafeAreaProvider>
-    </>
-  );
+  //     <Text style={{ padding: 10, fontSize: 16 }}>
+  //       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  //       eiusmod tempor incididunt ut labore et dolore magna aliqua. Nam
+  //       aliquam sem et tortor consequat id porta nibh. Pellentesque nec
+  //       nam aliquam sem. Placerat duis ultricies lacus sed. Non curabitur
+  //       gravida arcu ac tortor dignissim convallis aenean. Amet nisl purus
+  //       in mollis nunc. Vel elit scelerisque mauris pellentesque pulvinar
+  //       pellentesque. Sagittis orci a scelerisque purus semper eget duis
+  //       at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
+  //       Duis at consectetur lorem donec massa sapien faucibus et molestie.
+  //       At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+  //       eget. Purus sit amet volutpat consequat mauris nunc congue nisi
+  //       vitae. Urna condimentum mattis pellentesque id nibh tortor id.
+  //       Consequat id porta nibh venenatis. Lectus vestibulum mattis
+  //       ullamcorper velit sed ullamcorper. Mauris a diam maecenas sed enim
+  //       ut sem. Volutpat commodo sed egestas egestas fringilla phasellus.
+  //       Turpis egestas integer eget aliquet nibh praesent tristique magna
+  //       sit. Congue mauris rhoncus aenean vel elit scelerisque. Tellus
+  //       integer feugiat scelerisque varius morbi enim. Consectetur a erat
+  //       nam at. Bibendum arcu vitae elementum curabitur vitae nunc. Sit
+  //       amet consectetur adipiscing elit. Rhoncus mattis rhoncus urna
+  //       neque viverra justo. Malesuada pellentesque elit eget gravida.
+  //       Vitae nunc sed velit dignissim sodales ut eu sem integer.
+  //       pellentesque. Sagittis orci a scelerisque purus semper eget duis
+  //       at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
+  //       Duis at consectetur lorem donec massa sapien faucibus et molestie.
+  //       At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+  //       eget. Purus sit amet volutpat consequat mauris nunc congue nisi
+  //       vitae. Urna condimentum mattis pellentesque id nibh tortor id.
+  //       Consequat id porta nibh venenatis. Lectus vestibulum mattis
+  //       ullamcorper velit sed ullamcorper.pellentesque. Sagittis orci a scelerisque purus semper eget duis
+  //       at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
+  //       Duis at consectetur lorem donec massa sapien faucibus et molestie.
+  //       At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+  //       eget. Purus sit amet volutpat consequat mauris nunc congue nisi
+  //       vitae. Urna condimentum mattis pellentesque id nibh tortor id.
+  //       Consequat id porta nibh venenatis. Lectus vestibulum mattis
+  //       ullamcorper velit sed ullamcorper.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  //       eiusmod tempor incididunt ut labore et dolore magna aliqua. Nam
+  //       aliquam sem et tortor consequat id porta nibh. Pellentesque nec
+  //       nam aliquam sem. Placerat duis ultricies lacus sed. Non curabitur
+  //       gravida arcu ac tortor dignissim convallis aenean. Amet nisl purus
+  //       in mollis nunc. Vel elit scelerisque mauris pellentesque pulvinar
+  //       pellentesque. Sagittis orci a scelerisque purus semper eget duis
+  //       at tellus. Sed libero enim sed faucibus turpis in eu mi bibendum.
+  //       Duis at consectetur lorem donec massa sapien faucibus et molestie.
+  //       At ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+  //       eget.
+  //     </Text>
+  //   <StatusBar style="light" />
+  //   </View>
+  //   </ScrollView>
+
+  //   </SafeAreaView>
+
+  //   </SafeAreaProvider>
+  //   </>
+  // );
 }
 
 const styles = StyleSheet.create({
