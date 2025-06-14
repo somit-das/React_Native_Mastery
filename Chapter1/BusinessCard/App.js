@@ -20,11 +20,29 @@ function DisplayInsets(){
   )
 }
 export default function App() {
+  const name = "Somit Das";
   const onContactMe=()=>{
     Linking.openURL("mailto:smithjasn4@gmail.com")
   }
+  const onDesignation=()=>{
+    console.log("hey");
+    return 'just another developer';
+  }
+  const renderIcons = ()=>{
+    return(
+
+      <View style={{ flexDirection: 'row', gap: '10', marginVertical: '10' }}>
+
+        <FontAwesome5 name="github" size={24} color="black" />
+        <FontAwesome6 name="x-twitter" size={24} color="black" />
+        <FontAwesome5 name="telegram" size={24} color="black" />
+        
+      </View>
+    )
+  }
   
   return (
+    <>  
     <SafeAreaProvider>
     <SafeAreaView edges={['bottom']}>
       
@@ -44,17 +62,10 @@ export default function App() {
         borderColor: 'white',
         marginTop: '-50'
       }} />
-      <Text style={{ fontSize: 30, fontWeight: 500 }}>Somit Das</Text>
-      <Text>just another developer</Text>
+      <Text style={{ fontSize: 30, fontWeight: 500 }}>{name}</Text>
+      <Text>{onDesignation()}</Text>
 
-      <View style={{ flexDirection: 'row', gap: '10', marginVertical: '10' }}>
-
-        <FontAwesome5 name="github" size={24} color="black" />
-        <FontAwesome6 name="x-twitter" size={24} color="black" />
-        <FontAwesome5 name="telegram" size={24} color="black" />
-        
-      </View>
-
+      {renderIcons()}
       <Button title='contact-me' onPress={onContactMe}/> 
 
       <Text style={{ padding: 10, fontSize: 16 }}>
@@ -113,6 +124,7 @@ export default function App() {
     </SafeAreaView>
 
     </SafeAreaProvider>
+    </>
   );
 }
 
