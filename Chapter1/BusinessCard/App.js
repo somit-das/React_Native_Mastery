@@ -95,9 +95,6 @@ export default function App() {
               contentContainerStyle={{gap:10,padding:10}}
             >
 
-              {/* {ProjectCard()}
-              {ProjectCard()}
-              {ProjectCard()} */}
               <ProjectCard name="Library MGMT" image={require("./assets/projects/project1.jpg")} />
               <ProjectCard name="Heart Disease Analysis" image={require("./assets/projects/project2.jpg")} />
               <ProjectCard name="SMA" image={require("./assets/projects/project3.jpg")} />
